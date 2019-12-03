@@ -41,7 +41,7 @@
         background-color: transparent;}
       .process{
         width: 100px;
-        height: auto;
+        height: 100px;
       }
       #refine{
         display: flex;
