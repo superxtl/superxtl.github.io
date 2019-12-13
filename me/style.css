@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Sahitya&display=swap');
+body{
+	margin:0;
+	padding:0;
+}
+.menu{
+display: none;
+}
+.name{
+	margin:auto;
+	font-family: 'Sahitya', serif;
+	font-size: 1.5em;
+}
+.firstline{
+	display: flex;
+}
+header{
+	position:absolute;
+	top:0;
+	left:0;
+	background-color: black;
+	color:white;
+	width: 100%;
+	font-size: 24px;
+}
+header nav ul{
+	margin:0;
+	padding:0;
+	width:50%;
+	margin:auto;
+	display: flex;
+	justify-content: space-between;
+}
+header nav ul li{
+	list-style: none;
+}
+header nav ul a{
+	font-family: 'Sahitya', serif;
+	color: white;
+	text-decoration: none;
+}
+@media(max-width: 992px){
+	.menu{
+		display: block;
+		position: absolute;
+		margin:16px;
+		color:white;
+	}
+	nav{
+		display:none;
+	}
+}
+@media(max-width: 768px){
+	.name{
+	margin:auto;
+
+	font-family: 'Sahitya', serif;
+	font-size: 1em;
+	}
+	.menu{
+	margin:7px;
+	}
