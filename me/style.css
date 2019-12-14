@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Sahitya&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Barlow|Sahitya&display=swap');
 body{
 	margin:0;
 	padding:0;
@@ -35,8 +35,9 @@ header nav ul li{
 	list-style: none;
 }
 header nav ul a{
-	font-family: 'Sahitya', serif;
-	color: white;
+	font-family: 'Barlow', sans-serif;
+	color: #dedede;
+	font-size:0.8em;
 	text-decoration: none;
 }
 @media(max-width: 992px){
@@ -55,3 +56,7 @@ header nav ul a{
 	}
 }
 @media(max-width: 768px){
+	.name{
+		font-size: 1em;
+		padding:9.25px;
+	}
