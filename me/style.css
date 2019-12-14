@@ -41,22 +41,17 @@ header nav ul a{
 }
 @media(max-width: 992px){
 	.menu{
+		width:56.5px;
+		height:56.5px;
 		display: block;
 		position: absolute;
-		margin:16px;
 		color:white;
+	}
+	.fa{
+		padding:16.25px;
 	}
 	nav{
 		display:none;
 	}
 }
 @media(max-width: 768px){
-	.name{
-	margin:auto;
-
-	font-family: 'Sahitya', serif;
-	font-size: 1em;
-	}
-	.menu{
-	margin:0.1em;
-	}
