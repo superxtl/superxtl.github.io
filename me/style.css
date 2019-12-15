@@ -18,7 +18,8 @@ display: none;
 	font-size: 1.5em;
 }
 header{
-	padding:10px;
+	padding-top:10px;
+	padding-bottom:10px;
 	position:absolute;
 	background-color: black;
 	color:white;
@@ -42,10 +43,19 @@ header nav ul a{
 	font-size:0.8em;
 	text-decoration: none;
 }
+img{
+	width: 50%;
+	margin:auto;
+}
+main{
+	display:flex;
+	flex-direction: column;
+}
 @media(max-width: 992px){
 	header{
-		padding:5px;
-	}
+		padding-top:5px;
+		padding-bottom:5px;
+	}	
 	.fa-bars{
 		display: block;
 		position: absolute;
