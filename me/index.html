@@ -9,11 +9,12 @@
 </head>
 <body>
 	<header>
-		<div class="firstline">
-			<i class="fa fa-bars" aria-hidden="true"></i>
-			<div class="name">Tianlin Xie</div>
+		<div class="firstline" >
+			<i class="fa fa-bars" class="fa-bars-active"aria-hidden="true"></i>
+			<i class="fa fa-times" class="fa fa-times-active" aria-hidden="true"></i>
+			<div class="name" class="name-active">Tianlin Xie</div>
 		</div>
-		<nav>
+		<nav class="nav-active">
 			<ul>
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Selected Pieces</a></li>
@@ -22,5 +23,16 @@
 			</ul>
 		</nav>
 	</header>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.fa').click(function(){
+				$('nav').toggleClass('nav-active');
+				$('.name').toggleClass('name-active');
+				$('.fa-bars').toggleClass('fa-bars-active');
+				$('.fa-times').toggleClass('fa-times-active');
+			});
+		});
+	</script>
 </body>
 </html>
