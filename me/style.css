@@ -71,10 +71,11 @@ main{
 
 	}
 	.fa-times{
+		padding:14.75px;
 		display: none;
 	}
 	.fa-times-active{
-		display: block;
+		display:block;
 		padding:14.75px;
 	}
 	.name{
@@ -85,7 +86,7 @@ main{
 		width: 100%;
 		height: 100%;
 		text-align: center;
-				position: absolute;
+		position: absolute;
 	}
 	header nav.nav-active{
 		display:none;
@@ -94,9 +95,10 @@ main{
 		width:100%;
 		display:block;
 		background:black;
+		padding-bottom: 58.7px;
 	}
 	header nav ul li{
-		padding:20px;
+		padding:40px;
 	}
 	.name-active{
 		display:none;
