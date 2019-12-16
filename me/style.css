@@ -47,6 +47,9 @@ header nav ul a{
 	font-size:0.8em;
 	text-decoration: none;
 }
+header nav ul a:active{
+	text-decoration: underline;
+}
 img{
 	width: 50%;
 	margin:auto;
