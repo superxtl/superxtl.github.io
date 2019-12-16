@@ -53,10 +53,6 @@ header nav ul a:hover{
 header nav ul a:active{
 	text-decoration: underline;
 }
-header .firstline .name a{
-	color:white;
-	text-decoration: none;
-}
 img{
 	width: 50%;
 	margin:auto;
