@@ -17,10 +17,14 @@ display: none;
 	font-family: 'Sahitya', serif;
 	font-size: 1.5em;
 }
+.smalljar{
+	width: 100%;
+	height: auto;
+}
 header{
 	padding-top:10px;
 	padding-bottom:10px;
-	position:absolute;
+	position:relative;
 	background-color: black;
 	color:white;
 	width: 100%;
@@ -68,13 +72,10 @@ main{
 	}
 	.fa-times{
 		display: none;
-
 	}
 	.fa-times-active{
 		display: block;
-		position: absolute;
 		padding:14.75px;
-
 	}
 	.name{
 		font-size: 1em;
@@ -83,8 +84,8 @@ main{
 	header nav{
 		width: 100%;
 		height: 100%;
-		transition:1s;
 		text-align: center;
+				position: absolute;
 	}
 	header nav.nav-active{
 		display:none;
