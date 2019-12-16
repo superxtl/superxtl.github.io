@@ -47,8 +47,15 @@ header nav ul a{
 	font-size:0.8em;
 	text-decoration: none;
 }
+header nav ul a:hover{
+	text-decoration: underline;
+}
 header nav ul a:active{
 	text-decoration: underline;
+}
+header .firstline .name a{
+	color:white;
+	text-decoration: none;
 }
 img{
 	width: 50%;
