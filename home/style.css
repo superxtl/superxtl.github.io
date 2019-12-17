@@ -19,8 +19,16 @@ display: none;
 }
 main img{
 	width: 100%;
-	height: auto;
+	height: 100%;
+	margin: 0;
+	padding:0;
 }
+
+main a:hover, main a:active{
+	opacity: .1;
+    transition: opacity .5s ease-out;
+}
+
 header{
 	padding-top:10px;
 	padding-bottom:10px;
