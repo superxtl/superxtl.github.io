@@ -1,7 +1,7 @@
 let heart=[];
 let a=0, angle=0;
 let locX,locY;
-let ring, myFont, milktea, diffuse,diamond,tennis,tenTex,graphics,myFont2,tianrui,graphics2,pic1,pic2,pic3,pic4;
+let ring, myFont, milktea, diffuse,tennis,tenTex,graphics,myFont2,tianrui,graphics2,pic1,pic2,pic3,pic4;
 const fireworks = [];
 let gravity;
 function preload(){
@@ -11,7 +11,6 @@ function preload(){
   diffuse=loadImage('cup_diffuse.png');
   tianrui=loadImage('tianrui.JPG');
   tenTex=loadImage('Tennis_Ball_Texture.jpg');
-  diamond=loadImage('diamond.jpg');
   pic1=loadImage('pic1.JPG');
   pic2=loadImage('pic2.JPG');
   pic3=loadImage('pic3.jpg');
@@ -32,7 +31,7 @@ function setup() {
   graphics2=createGraphics(200,200);
   graphics2.fill(255);
   graphics2.textAlign(CENTER);
-  graphics2.textSize(40);
+  graphics2.textSize(60);
   graphics2.textFont(myFont2);
   graphics2.text('ForeverLove',100,100);
     gravity = createVector(0, 0.13);
