@@ -11,7 +11,6 @@ function preload(){
   diffuse=loadImage('cup_diffuse.png');
   tianrui=loadImage('tianrui.JPG');
   tenTex=loadImage('Tennis_Ball_Texture.jpg');
-  diamond=loadImage('diamond.jpg');
   pic1=loadImage('pic1.JPG');
   pic2=loadImage('pic2.JPG');
   pic3=loadImage('pic3.jpg');
