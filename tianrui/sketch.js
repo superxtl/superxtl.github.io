@@ -174,7 +174,7 @@ function draw() {
   //fireworks
   push();
   translate(-windowWidth/2,-windowHeight/2,-1500);
-    if (random(1) < 0.08) {
+    if (random(1) < 0.04) {
     fireworks.push(new Firework());
   }
   
