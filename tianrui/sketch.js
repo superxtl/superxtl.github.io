@@ -1,7 +1,7 @@
 let heart=[];
 let a=0, angle=0;
 let locX,locY;
-let ring, myFont, milktea, diffuse,tennis,tenTex,graphics,myFont2,tianrui,graphics2,pic1,pic2,pic3,pic4;
+let ring, myFont, milktea, diffuse,diamond,tennis,tenTex,graphics,myFont2,tianrui,graphics2,pic1,pic2,pic3,pic4;
 const fireworks = [];
 let gravity;
 function preload(){
