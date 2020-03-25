@@ -4,17 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="css/main.css">
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+    }
+    canvas{
+      display:block;
+    }
+  </style>
 </head>
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"> </script>
 
   <script>
     var scene=new THREE.Scene();
     var camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+    camera.position.z=100;
     var renderer=new THREE.WebGLRenderer({antialias:true});
-    renderer.setClearColor("#e5e5e5");
+    renderer.setClearColor("#000000");
     renderer.setSize(window.innerWidth,window.innerHeight);
     document.body.appendChild(renderer.domElement);
     window.addEventListener('resize',()=>{
@@ -22,14 +31,68 @@
         camera.aspect=window.innerWidth/window.innerHeight;
         camera.updateProjectionMatrix();
     })
+    var raycaster=new THREE.Raycaster();
+    var mouse=new THREE.Vector2;
 
-    var geometry=new THREE.SphereGeometry(1,10,10);
-    var material=new THREE.MeshLambertMaterial({color:0xFFCC00});
-    var mesh=new THREE.Mesh(geometry,material);
+    var x = 0, y = 0;
 
-    scene.add(mesh);
+    var heartShape = new THREE.Shape();
 
-    renderer.render(scene,camera); 
+    heartShape.moveTo( x + 5, y + 5 );
+    heartShape.bezierCurveTo( x + 5, y + 5, x + 4, y, x, y );
+    heartShape.bezierCurveTo( x - 6, y, x - 6, y + 7,x - 6, y + 7 );
+    heartShape.bezierCurveTo( x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19 );
+    heartShape.bezierCurveTo( x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7 );
+    heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
+    heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
+
+    var geometry = new THREE.ShapeGeometry( heartShape );
+    var material = new THREE.MeshLambertMaterial( { color: 0xFF0000 } );
+    // var geometry=new THREE.SphereGeometry(1,10,1000);
+    // var material=new THREE.MeshLambertMaterial({color:0xFF0000});
+    //var mesh=new THREE.Mesh(geometry,material);
+    for(var i=0;i<35;i++){
+      var mesh=new THREE.Mesh(geometry,material);
+      mesh.rotation.z=Math.PI;
+      mesh.position.x=(Math.random()-0.5)*300;
+      mesh.position.y=(Math.random()-0.5)*100;
+      mesh.position.z =(Math.random()-0.5)*100;
+      scene.add(mesh); 
+    }
+    // mesh.position.set(1,1,1);
+    // mesh.rotation.set(0,45,0);
+    // mesh.scale.set(3,3,3);
+    //scene.add(mesh);
+    var light=new THREE.PointLight(0xFFFFFF,1,5000);
+    light.position.set(27,30,3);
+    scene.add(light);
+    var light=new THREE.PointLight(0xFFFFFF,1,5000);
+    light.position.set(9,30,50);
+    scene.add(light);
+    var render = function(){
+      requestAnimationFrame(render);
+      // mesh.rotation.y+=0.01;
+      // mesh.scale.x-=0.01;
+      renderer.render(scene,camera); 
+    }
+    function onMouseMove(){
+      event.preventDefault();
+      mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+      raycaster.setFromCamera(mouse,camera); 
+      var intersects=raycaster.intersectObjects(scene.children,true);
+      for(var i=0;i<intersects.length;i++){
+        console.log(intersects[i].object); 
+        this.tl=new TimelineMax();
+        this.tl.to(intersects[i].object.scale,1,{y:1.5,ease:Expo.easeOut});
+        this.tl.to(intersects[i].object.scale,1,{x:1.5,ease:Expo.easeOut},"=-1");
+        this.tl.to(intersects[i].object.rotation,1,{y:Math.PI*20,ease:Expo.easeOut},"=-0.5");
+      }
+    }
+    render();
+    
+
+    window.addEventListener('mousemove',onMouseMove)
   </script>
 </body>
 </html>
