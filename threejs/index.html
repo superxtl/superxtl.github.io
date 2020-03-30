@@ -64,8 +64,10 @@
     let render=function(){
       requestAnimationFrame(render);
 
+      if(o1!=undefined&&o2!=undefined){
       o1.rotation.y-=0.01;
       o2.rotation.y-=0.01;
+    }
       renderer.render(scene,camera);
     }
     render();
