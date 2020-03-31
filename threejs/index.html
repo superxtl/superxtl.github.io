@@ -39,7 +39,7 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
       camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
       camera.position.z=10;
       renderer=new THREE.WebGLRenderer({antialias:true});
-      renderer.setClearColor(0xFFFFFF);
+      renderer.setClearColor(0x000000);
       renderer.setSize(window.innerWidth,window.innerHeight);
       document.body.appendChild(renderer.domElement);
       window.addEventListener('resize',()=>{
@@ -81,10 +81,10 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
     }
     function createDounts(){
       let geometry=new THREE.TorusGeometry(1,0.1,5,30);
-      let material=new THREE.MeshDepthMaterial({color:Math.random()*0xffffff,transparent:true,opacity:0.7});
+      let material=new THREE.MeshLambertMaterial({color:0xffffff,transparent:true,opacity:0.7});
       let d=new THREE.Mesh(geometry,material);
-      d.position.x=-75+Math.random()*150;
-      d.position.z=-Math.random()*50;
+      d.position.x=-75+Math.random()*175;
+      d.position.z=-Math.random()*60;
       d.position.y=-50;
       scene.add(d);
       dounts.push(d);
@@ -98,7 +98,6 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
         materials.preload();
         objLoader.setMaterials(materials);
         objLoader.load('glass.obj',function(object){
-          // object.color(0xFFFFFF);
           scene.add(object);
           o1=object;
           object.position.z=-100;

@@ -2,7 +2,7 @@
 mtllib Heart shaped balloon (copy).mtl
 o 000_Box_-_baked_-_baked
 g Box_-_baked_-_baked
-usemtl Fabric Editable_44c381e1-63e5-4857-b123-c0eb17097bdc
+usemtl Wood Editable 1_cc16e0ab-2eda-4753-993f-32e6658a3084
 v 10.469 0.000 -39.158
 v 0.000 0.000 -39.237
 v 10.469 0.000 -39.237
@@ -247,7 +247,7 @@ f 10/91/91 3/89/89 2/92/92 26/90/90
 f 26/95/95 2/93/93 5/96/96 16/94/94 
 o 001_Box_-_baked_-_baked
 g Box_-_baked_-_baked
-usemtl Fabric Editable_44c381e1-63e5-4857-b123-c0eb17097bdc
+usemtl Wood Editable 1_cc16e0ab-2eda-4753-993f-32e6658a3084
 v -34.006 0.000 -22.057
 v -37.316 0.000 -12.125
 v -34.081 0.000 -22.082
@@ -492,7 +492,7 @@ f 36/187/187 29/185/185 28/188/188 52/186/186
 f 52/191/191 28/189/189 31/192/192 42/190/190 
 o 002_Box_-_baked_-_baked
 g Box_-_baked_-_baked
-usemtl Fabric Editable_44c381e1-63e5-4857-b123-c0eb17097bdc
+usemtl Wood Editable 1_cc16e0ab-2eda-4753-993f-32e6658a3084
 v -31.486 -0.000 25.525
 v -23.063 -0.000 31.743
 v -31.533 -0.000 25.590
@@ -737,7 +737,7 @@ f 62/283/283 55/281/281 54/284/284 78/282/282
 f 78/287/287 54/285/285 57/288/288 68/286/286 
 o 003_Box_-_baked_-_baked
 g Box_-_baked_-_baked
-usemtl Fabric Editable_44c381e1-63e5-4857-b123-c0eb17097bdc
+usemtl Wood Editable 1_cc16e0ab-2eda-4753-993f-32e6658a3084
 v 14.546 -0.000 37.833
 v 23.063 -0.000 31.743
 v 14.593 -0.000 37.897
@@ -982,7 +982,7 @@ f 88/379/379 81/377/377 80/380/380 104/378/378
 f 104/383/383 80/381/381 83/384/384 94/382/382 
 o 004_Box_-_baked_-_baked
 g Box_-_baked_-_baked
-usemtl Fabric Editable_44c381e1-63e5-4857-b123-c0eb17097bdc
+usemtl Wood Editable 1_cc16e0ab-2eda-4753-993f-32e6658a3084
 v 40.476 0.000 -2.143
 v 37.316 0.000 -12.125
 v 40.552 0.000 -2.168
