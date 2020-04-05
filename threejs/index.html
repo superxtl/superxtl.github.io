@@ -27,8 +27,7 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
     const LEFT=37,RIGHT=39,UP=38,DOWN=40;
     var scene,camera,renderer,light,o1,o2,butterfly,text,theta=0,dountMoveY=0.33,camRotationX=0.004,heartRotationX=0.01;
     var add1=0.7,add2=0.6,add3=0.75,add4=0.65,add5=0.55,add6=0.525,add7=0.675,add8=0.725,add9=0.625,add10=0.575,raycaster,mouse;
-    var dounts=[];
-    var butterflys=[];
+    var dounts=[],butterflys=[],spheres=[];
     function init(){
       createScene();
       createLights();
@@ -77,6 +76,7 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
       butterfly.position.x=-70+140*Math.random();
       butterfly.position.y=-70+140*Math.random();
       butterfly.position.z=-170+140*Math.random();
+      butterfly.scale.set(1.5,1.5,1.5);
       // butterfly.position.y=-40+80*Math.random();
       scene.add(butterfly);
       butterflys.push(butterfly)
@@ -134,6 +134,15 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
         });
       });
     }
+      function createSphere(pos){
+        let material=new THREE.MeshPhongMaterial({color:0xFFFFFF,shininess:100,side:THREE.DoubleSide});
+        let geometry=new THREE.SphereGeometry(Math.random()*3,2,2);
+        let sphere=new THREE.Mesh(geometry,material);
+        sphere.position.set(pos.x,pos.y,pos.z);
+        scene.add(sphere);
+        spheres.push(sphere);
+      }
+    
     function onKeyDown(key){
       if(key.keyCode==DOWN){
         dountMoveY=-0.3;
@@ -159,14 +168,30 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
     }
     var raycaster=new THREE.Raycaster();
     var mouse=new THREE.Vector2;
+    mouse.x=mouse.y=-1;
     function onMouseMove(e){
       mouse.x=(e.clientX/window.innerWidth)*2-1;
-      mouse.y=-(e.clientX/window.innerHeight)*2+1;
-      mouse.z=0;
+      mouse.y=-(e.clientY/window.innerHeight)*2+1;
+      mouse.z=1;
       raycaster.setFromCamera(mouse,camera);
+      // createSphere(raycaster.ray.at(100));
       var intersects=raycaster.intersectObjects(scene.children,true);
-      intersects.forEach(obj=>obj.object.material.color.set(0xFF0000));
-      
+      // console.log(intersects);
+      intersects.forEach(obj=>obj.object.material.color.set(0xf7e7ce));
+        for(var i=0;i<intersects.length;i++){
+        this.tl=new TimelineMax();
+        // // this.tl.to(intersects[i].object.scale,1,{y:1.5,ease:Expo.easeOut});
+        // // this.tl.to(intersects[i].object.scale,1,{x:1.5,ease:Expo.easeOut},"=-1");
+        this.tl.to(intersects[i].object.rotation,1,{y:Math.PI*20});
+      }
+    }
+    function onMouseClick(e){
+      mouse.x=(e.clientX/window.innerWidth)*2-1;
+      mouse.y=-(e.clientY/window.innerHeight)*2+1;
+      mouse.z=1;
+      raycaster.setFromCamera(mouse,camera);
+      // console.log(raycaster)
+      createSphere(raycaster.ray.at(100));
     }
     function loop(){
       requestAnimationFrame(loop);
@@ -194,7 +219,8 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
     
       renderer.render(scene,camera);
       document.addEventListener("keydown",onKeyDown,true);
-      document.addEventListener("mousemove",onMouseMove,true);
+      document.addEventListener("mousemove",onMouseMove,false);
+      document.addEventListener("click",onMouseClick,true);
     }
 
     function upDateButterfly(){
