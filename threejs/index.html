@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>First Scene</title>
+	<title>Depth of Heart</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
   <script src="MTLLoader.js"></script>
   <script src="OBJLoader.js"></script>
@@ -44,6 +44,7 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
       renderer=new THREE.WebGLRenderer({antialias:true});
       renderer.setClearColor(0x000000);
       renderer.setSize(window.innerWidth,window.innerHeight);
+      // renderer.shadowMap.enabled=true;
       document.body.appendChild(renderer.domElement);
       window.addEventListener('resize',()=>{
         renderer.setSize(window.innerWidth,window.innerHeight);
@@ -57,9 +58,12 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
       let geometry=new THREE.TextGeometry("To ZTR",{font:font,size:1,height:0.5});
       let material=new THREE.MeshLambertMaterial({color:0x777777});
       text=new THREE.Mesh(geometry,material);
+      // text.castShadow=true;
+      // text.receiveShadow=true;
       text.scale.set(2,2,2);
-      text.position.x=0;
-      text.position.z=-50;
+      // text.position.x=40;
+      text.position.y=-10;
+      text.position.z=-60;
       scene.add(text);
     }
     function createButterfly(){
@@ -78,14 +82,30 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
       butterfly.position.y=-70+140*Math.random();
       butterfly.position.z=-170+140*Math.random();
       butterfly.scale.set(1.5,1.5,1.5);
+      // butterfly.castShadow=true;
+      // butterfly.receiveShadow=true;
       // butterfly.position.y=-40+80*Math.random();
       scene.add(butterfly);
       butterflys.push(butterfly)
     }
     function createLights(){
-      light=new THREE.PointLight(0xffffff,1.4,1000);
-      light.position.set(15,0,15);
-      scene.add(light);
+      dlight=new THREE.DirectionalLight(0xffffff);
+      dlight.position.set(0,0,1);      
+      // spotlight.angle=Math.PI/2;   
+      // spotlight.penumbra=0.05;
+      // spotlight.decay=2;
+      // spotlight.distance=1000;
+      // spotlight.castShadow=true;
+      // spotlight.shadow=new THREE.LightShadow(camera);
+      // spotlight.bias=0.0001;
+      // spotlight.shadow.mapSize.width=2048;
+      // spotlight.shadow.mapSize.height=1024;
+      dlight.castShadow=true;
+      // dlight.shadow.mapSize.width=2048;
+      // dlight.shadow.mapSize.height=1024;
+      scene.add(dlight);
+      // lightHelper=new THREE.DirectionalLightHelper(dlight,1,0xffffff);
+      // scene.add(lightHelper);
       light=new THREE.PointLight(0xFFFFFF,1.4,1000);
       light.position.set(-25,-20,-400);
       scene.add(light);
@@ -98,6 +118,8 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
       d.position.z=-Math.random()*200;
       d.position.y=-100+Math.random()*200;;
       d.rotation.y=-2+4*Math.random();
+      // d.castShadow=true;
+      // d.receiveShadow=true;
       scene.add(d);
       dounts.push(d);
       d.over=false;
@@ -114,6 +136,8 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
         objLoader.setMaterials(materials);
       });
         objLoader.load('glass.obj',function(object){
+          // object.castShadow=true;
+          // object.receiveShadow=true;
           scene.add(object);  
           o1=object;
           object.position.z=-100;
@@ -125,6 +149,8 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
         materials.preload();
         objLoader.setMaterials(materials);
         objLoader.load('heart.obj',function(object){
+          // object.castShadow=true;
+          // object.receiveShadow=true;
           scene.add(object);
           o2=object;
           object.position.z=-100;
@@ -142,6 +168,8 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
         let geometry=new THREE.SphereGeometry(Math.random()*2,2,2);
         let sphere=new THREE.Mesh(geometry,material);
         sphere.position.set(pos.x,pos.y,pos.z);
+        // sphere.castShadow = true; //default is false
+        // sphere.receiveShadow = true;
         scene.add(sphere);
         spheres.push(sphere);
       }
@@ -151,6 +179,7 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
         let geometry=new THREE.SphereGeometry(900,200,200);
         background=new THREE.Mesh(geometry,material);
         background.position.set(0,0,-100);
+        // background.receiveShadow=true;
         scene.add(background);
       }
     function onKeyDown(key){
@@ -190,9 +219,9 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
       raycaster.setFromCamera(mouse,camera);
       // createSphere(raycaster.ray.at(100));
       var intersects=raycaster.intersectObjects(scene.children,true);
-      console.log(intersects);
+      // console.log(intersects);
       
-      intersects.forEach(obj=>obj.object.material.color.set(0xf7e7ce));
+      intersects.forEach(obj=>obj.object.material.color.set(0xfae9ce));
         for(var i=0;i<intersects.length;i++){
         this.tl=new TimelineMax();
         // // this.tl.to(intersects[i].object.scale,1,{y:1.5,ease:Expo.easeOut});
@@ -235,10 +264,12 @@ let fontJSON={"glyphs":{"ο":{"x_min":30,"x_max":741,"ha":774,"o":"m 395 683 q 6
         scene.remove(d);
       }});
       // text.rotation.x+=0.01;
-
+      // lightHelper.update();
       upDateButterfly();
-    
+
+
       renderer.render(scene,camera);
+
       document.addEventListener("keydown",onKeyDown,true);
       document.addEventListener("mousemove",onMouseMove,false);
       document.addEventListener("click",onMouseClick,true);
